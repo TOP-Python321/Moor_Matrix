@@ -12,15 +12,7 @@ class Matrix:
 
     def __add__(self, other):
         other = Matrix(other)
-        nex_matrix = []
-        numbers = []
-        for i in range(len(self.matrix)):
-            for j in range(len(self.matrix[0])):
-                summa = other[i][j] + self.matrix[i][j]
-                numbers.append(summa)
-                if len(numbers) == len(self.matrix[0]):
-                    nex_matrix.append(numbers)
-                    numbers = []
+        nex_matrix = [map(sum, zip(*i)) for i in zip(self.matrix, other)]
         return Matrix(nex_matrix)
 
 
